@@ -1,0 +1,7 @@
+ "use client";
+import {useState} from "react";
+export default function Login(){
+ const [password,setPassword]=useState(""); const [error,setError]=useState(""); const [busy,setBusy]=useState(false);
+ async function enter(e){e.preventDefault();setBusy(true);setError("");try{const r=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password,scope:"portal"})});if(!r.ok)throw new Error("Senha incorreta. Confira com o instrutor.");location.href="/";}catch(err){setError(err.message)}finally{setBusy(false)}}
+ return <main className="login-wrap"><form className="login-card" onSubmit={enter}><div className="brand"><div className="brandmark" style={{color:"#102b4e"}}>✈</div><div><strong style={{color:"#102b4e"}}>COTEC CATALÃO</strong><small style={{color:"#627184"}}>PORTAL DO ALUNO</small></div></div><h1>Bem-vindo!</h1><p>Digite a senha geral fornecida pelo instrutor para acessar os materiais do curso de Pilotagem de Drones.</p><label htmlFor="password"><b style={{fontSize:12}}>Senha de acesso</b></label><input id="password" className="field" type="password" autoComplete="current-password" value={password} onChange={e=>setPassword(e.target.value)} required/><button className="btn btn-orange full" disabled={busy}>{busy?"Verificando…":"Entrar no portal →"}</button>{error&&<div className="error">{error}</div>}<a className="back" href="https://www.cotec.org.br/" target="_blank">COTEC · Goiás</a></form></main>
+}
