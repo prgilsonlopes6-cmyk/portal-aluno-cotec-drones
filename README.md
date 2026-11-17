@@ -27,6 +27,8 @@ O login do portal e a validação da sessão já estão preparados. Para liberar
 4. Abra `http://localhost:3000`.
 
 ## Publicar na Vercel
+
+Integração com Vercel - Portal do Aluno COTEC.
 Importe este projeto na Vercel a partir de um repositório GitHub e configure as variáveis de ambiente antes do deploy.
 
 ## Atualização normativa
